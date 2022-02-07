@@ -11,15 +11,5 @@ class Solution:
             fast=fast.next.next
             slow=slow.next
         return slow
-        # length=0
-        # iterator=0
-        # while(head!=None):
-        #     length+=1
-        #     head=head.next
-        # while(temp!=None):
-        #     iterator+=1
-        #     if(iterator==length//2+1):
-        #         return temp
-        #     temp=temp.next
             
         
