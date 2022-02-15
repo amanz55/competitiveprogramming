@@ -4,36 +4,12 @@ class Solution:
     def select(self, arr, i):
         arr1 = arr[i:]
         return arr1.index(min(arr1)) + i
-        # selected = i
-        # for index in range(i, len(arr)):
-        #     if arr[index] < arr[selected]:
-        #         selected = index
-        # return selected
     
     def selectionSort(self, arr,n):
-        #code here
         for i in range(n):
             minindex = self.select(arr, i)
             if minindex != i:
                 arr[i], arr[minindex] = arr[minindex], arr[i]
-    # def select(self, arr, i):
-    #     arr1 = self.arr[i:]
-    #     return min(arr1)
-    
-    # def selectionSort(self, arr,n):
-    #     # self.arr=arr
-    #     # for i in range(len(arr)-1):
-    #     #     mymin = self.select(arr, i)
-    #     #     myindex = self.arr.index(mymin)
-    #     #     if myindex != i:
-    #     #         self.arr[i], self.arr[myindex] = self.arr[myindex], self.arr[i]
-    #     for index in range(n):
-    #         self.arr=arr
-    #         sort = self.select(arr, index)
-    #         myindex = self.arr.index(sort)
-    #         if myindex != index:
-    #             self.arr[index], self.arr[myindex] = self.arr[myindex], self.arr[index]
-    #     return arr
 
 #{ 
 #  Driver Code Starts
