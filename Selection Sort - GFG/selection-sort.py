@@ -2,18 +2,20 @@
 
 class Solution: 
     def select(self, arr, i):
-        selected = i
-        for index in range(i, len(arr)):
-            if arr[index] < arr[selected]:
-                selected = index
-        return selected
+        arr1 = arr[i:]
+        return arr1.index(min(arr1)) + i
+        # selected = i
+        # for index in range(i, len(arr)):
+        #     if arr[index] < arr[selected]:
+        #         selected = index
+        # return selected
     
     def selectionSort(self, arr,n):
         #code here
-        for index in range(n):
-            sort = self.select(arr, index)
-            if sort != index:
-                arr[index], arr[sort] = arr[sort], arr[index]
+        for i in range(n):
+            minindex = self.select(arr, i)
+            if minindex != i:
+                arr[i], arr[minindex] = arr[minindex], arr[i]
     # def select(self, arr, i):
     #     arr1 = self.arr[i:]
     #     return min(arr1)
