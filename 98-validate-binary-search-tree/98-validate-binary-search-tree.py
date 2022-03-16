@@ -8,22 +8,63 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         traversed = []
         
-        def traverse(r):
-            if r is None:
+        def traverse(rt):
+            if not rt:
                 return
+            traverse(rt.left)
             
-            traverse(r.left)
-        
-            traversed.append(r.val)
+            traversed.append(rt.val)
             
-            traverse(r.right)
-              
+            traverse(rt.right)
+            
         traverse(root)
         
         if sorted(list(set(traversed))) == traversed:
             return True
         else:
             return False
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         def validate(rt):
+#             if not rt or (not rt.left and not rt.right):
+#                 return True
+#             if rt.left and rt.right:
+#                 if rt.val < rt.right.val and rt.val > rt.left.val:
+#                     return validate(rt.left) and validate(rt.right)
+#                 else:
+#                     return False
+#             elif rt.left:
+#                 if rt.val > rt.left.val:
+#                     return validate(rt.left)
+#                 else:
+#                     return False
+#             elif rt.right:
+#                 if rt.val < rt.right.val:
+#                     return validate(rt.right)
+#                 else:
+#                     return False
+                
+                
+#         return validate(root)
             
             
         
