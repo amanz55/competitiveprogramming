@@ -12,3 +12,8 @@ class Solution:
                 return memo[(i, j)]
             
         return triangle[0][0] + min(dfs(1,0), dfs(1,1))
+    
+        # sums = 0
+        # for i in range(len(triangle)):
+        #     sums += min(triangle[i])
+        # return sums
