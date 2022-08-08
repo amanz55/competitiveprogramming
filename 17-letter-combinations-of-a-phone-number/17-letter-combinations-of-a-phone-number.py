@@ -13,13 +13,13 @@ class Solution:
             9 : ["w", "x", "y", "z"]
         }
         
-        def dfs(num, word):
-            num2 = digits[num]
+        def dfs(idx, word):
+            num2 = digits[idx]
             for child in mapp[num2]:
-                if num == (len(digits) - 1):
+                if idx == (len(digits) - 1):
                     result.append(word+child)
                 else:
-                    dfs(num + 1, word + child)
+                    dfs(idx + 1, word + child)
                         
         if digits:dfs(0, "")
         
