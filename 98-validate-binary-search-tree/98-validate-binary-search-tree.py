@@ -6,16 +6,20 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        arr = []
+        self.val = float("-inf")
+        self.flag = True
         def traverse(node):
             if node:
                 traverse(node.left)
-                arr.append(node.val)
+                if node.val <= self.val:
+                    self.flag = False
+                    return
+                self.val = node.val
+                # arr.append(node.val)
+                # if len(arr) > 1 and node.val < arr[-2]:
+                #     self.flag = False
                 traverse(node.right)
                 
         traverse(root)
-        if arr == sorted(list(set(arr))):
-            return True
-        else:
-            return False
+        return self.flag
         
