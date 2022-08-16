@@ -24,7 +24,7 @@ class Solution:
         res = []
         for i in word:
             if i not in curr.children:
-                return False
+                return word
             res.append(i)
             curr = curr.children[i]
             if curr.isWord:
@@ -37,10 +37,7 @@ class Solution:
         for j in dictionary:
             self.insert(j)
         for i in sentence.split(" "):
-            anss = self.search(i)
-            if anss:
-                result.append(anss)
-            else: result.append(i)
+            result.append(self.search(i))
         return " ".join(result)
                 
         
