@@ -7,19 +7,10 @@ class Solution:
         dp = {}
         
         dp[0] = nums[0]
-        dp[1] = nums[1]
+        dp[1] = max(nums[1], nums[0])
         
         for i in range(2, len(nums)):
-            j = i - 2
-            maxi = -1
-            while j >= 0:
-                maxi = max(maxi, dp[j])
-                j -= 1
-            
-            if dp[i-1] > maxi + nums[i]:
-                dp[i] = dp[i-1]
-            else:
-                dp[i] = maxi + nums[i]
+            dp[i] = max(dp[i - 2] + nums[i], dp[i-1])
         
         return dp[len(nums) - 1]
             
