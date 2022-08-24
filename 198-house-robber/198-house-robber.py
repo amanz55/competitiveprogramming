@@ -4,13 +4,11 @@ class Solution:
         if len(nums) < 3:
             return max(nums)
         
-        dp = {}
-        
-        dp[0] = nums[0]
-        dp[1] = max(nums[1], nums[0])
+        first = nums[0]
+        second = max(nums[1], nums[0])
         
         for i in range(2, len(nums)):
-            dp[i] = max(dp[i - 2] + nums[i], dp[i-1])
+            first, second = second, max(second, first + nums[i])
         
-        return dp[len(nums) - 1]
+        return second
             
