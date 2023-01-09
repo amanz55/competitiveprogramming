@@ -1,8 +1,7 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         answer = [[] for _ in range(numRows)]
-        idx = 0
-        l = len(s)
+        idx, l = 0, len(s)
         
         while idx < l:
             for j in range(len(answer)):
