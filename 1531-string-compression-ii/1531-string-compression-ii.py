@@ -1,17 +1,29 @@
 class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
-        @lru_cache(None)
-        def counter(start, last, last_count, left): #count the cost of compressing from the start
+        
+        string = list(s)
+        
+        @cache
+        def helper(idx, left, last, count):
             if left < 0:
-                return float('inf') # this is impossible
-            if start >= len(s):
-                return 0
-            if s[start] == last:
-                incr = 1 if last_count == 1 or last_count == 9 or last_count == 99 else 0
-                return incr + counter(start+1, last, last_count+1, left) # we keep this char for compression
-            else:
-                keep_counter = 1 + counter(start+1, s[start], 1, left)
-                del_counter =  counter(start + 1, last, last_count, left - 1)
-                return min(keep_counter, del_counter)
+                return float('inf')
             
-        return counter(0, "", 0, k)
+            if idx == len(s):
+                return 0
+            
+            if s[idx] == last:
+                inc = 0
+                if count == 1 or count == 9 or count == 99:
+                    inc = 1
+                    
+                return inc + helper(idx + 1, left, last, count + 1)
+                    
+            else:
+                pick = 1 + helper(idx + 1, left, s[idx], 1)
+                
+                jump = helper(idx + 1, left - 1, last, count)
+                
+                return min(pick, jump)
+            
+            
+        return helper(0, k, '', 0)
