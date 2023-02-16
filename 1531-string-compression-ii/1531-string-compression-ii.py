@@ -17,7 +17,7 @@ class Solution:
             answer = 0
             if s[idx] == last:
                 inc = 0
-                if count == 1 or count == 9 or count == 99:
+                if count == 1 or len(str(count + 1)) > len(str(count)):
                     inc = 1
                     
                 answer = inc + helper(idx + 1, left, last, count + 1)
