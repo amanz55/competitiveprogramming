@@ -7,29 +7,22 @@
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         indexer = {}
+        j = 0
         
-        for i, val in enumerate(preorder):
+        for i, val in enumerate(inorder):
             indexer[val] = i
             
-        def build(values):
-            if not values:
+        def build(left, right):
+            nonlocal j
+            if left > right:
                 return None
+            num = preorder[j]
             
-            if len(values) == 1:
-                node = TreeNode(values[0])
-                return node
-            
-            minimum = [inf, inf]
-            
-            for idx, value in enumerate(values):
-                minimum = min(minimum, [indexer[value], idx])
-                
-            i = minimum[1]
-            
-            node = TreeNode(values[i])
-            node.left = build(values[:i])
-            node.right = build(values[i + 1:])
+            node = TreeNode(num)
+            j += 1
+            node.left = build(left, indexer[num] - 1)
+            node.right = build(indexer[num] + 1, right)
             
             return node
         
-        return build(inorder)
+        return build(0, len(preorder) - 1)
