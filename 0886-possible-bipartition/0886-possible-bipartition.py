@@ -6,11 +6,10 @@ class Solution:
             graph[i].append(j)
             graph[j].append(i)
             
-        visit = [0] * n
+        visit = [0 for i in range(n)]
         visited = set()
         
         def dfs(node, past):
-            nonlocal visit
             visit[node - 1] = past
             visited.add(node)
             for nei in graph[node]:
