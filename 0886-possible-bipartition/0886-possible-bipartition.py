@@ -20,7 +20,6 @@ class Solution:
             return True
         
         for node in range(1, n + 1):
-            if not visit[node - 1]:
-                if not dfs(node, 1):
-                    return False
+            if not visit[node - 1] and not dfs(node, 1):
+                return False
         return True
