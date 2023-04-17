@@ -1,7 +1,7 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         answer = 0
-        visited = set()
+        visitedd = set()
         memo = {}
         directions = [[0,1],[1,0],[0,-1],[-1,0]]
         inbound = lambda x, y: 0 <= x < len(matrix) and 0 <= y < len(matrix[0])
@@ -21,13 +21,15 @@ class Solution:
                 row, col = i + r, j + c
                 
                 if not inbound(row, col) or ( (row, col) not in visited and matrix[row][col] > matrix[i][j]):
-                    maximum = max(maximum, dfs(row, col, visited.copy()))
+                    maximum = max(maximum, dfs(row, col, visited))
                     
-            memo[(i, j)] = maximum + 1        
+            memo[(i, j)] = maximum + 1  
+            visited.remove((i, j))
             return maximum + 1
         
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
-                answer = max(answer, dfs(i, j, set()))
+                answer = max(answer, dfs(i, j, visitedd))
+                visitedd = set()
                 
         return answer
