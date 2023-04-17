@@ -25,8 +25,10 @@ class Solution:
             memo[i][j] = maximum + 1  
             return maximum + 1
         
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                answer = max(answer, dfs(i, j))
+        # for i in range(len(matrix)):
+        #     for j in range(len(matrix[0])):
+        #         answer = max(answer, dfs(i, j))
                 
-        return answer
+        # return answer
+        
+        return max(dfs(x, y) for x in range(len(matrix)) for y in range(len(matrix[0])))
